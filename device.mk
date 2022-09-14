@@ -225,6 +225,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     init.recovery.mt6785.rc
 
+# Sensors
+PRODUCT_PACKAGES += \
+    libsensorndkbridge
+
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 29
 
