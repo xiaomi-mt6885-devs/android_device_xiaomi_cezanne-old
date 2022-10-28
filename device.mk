@@ -234,6 +234,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.adb.nonblocking_ffs=0
+
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator-service.cezanne
