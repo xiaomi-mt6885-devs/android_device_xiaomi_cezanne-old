@@ -110,6 +110,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshim_beanpod
 
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light-service.xiaomi
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
