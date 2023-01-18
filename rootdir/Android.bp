@@ -1,0 +1,76 @@
+//
+// Copyright (C) 2023 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Init configuration files
+prebuilt_etc {
+    name: "init.logcat.rc",
+    src: "etc/init.logcat.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.connectivity.rc",
+    src: "etc/init.connectivity.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.modem.rc",
+    src: "etc/init.modem.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mt6885.rc",
+    src: "etc/init.mt6885.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mt6885.usb.rc",
+    src: "etc/init.mt6885.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.project.rc",
+    src: "etc/init.project.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.sensor_2_0.rc",
+    src: "etc/init.sensor_2_0.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.cezanne.rc",
+    src: "etc/init.cezanne.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "ueventd.mtk.rc",
+    filename: "ueventd.rc",
+    src: "etc/ueventd.mtk.rc",
+    vendor: true,
+}
+
+// fstab
+prebuilt_etc {
+    name: "fstab.mt6885",
+    src: "etc/fstab.mt6885",
+    vendor: true,
+}
