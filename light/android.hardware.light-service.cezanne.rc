@@ -1,4 +1,4 @@
-service vendor.light-default /vendor/bin/hw/android.hardware.lights-service.cezanne
+service vendor.light-default /vendor/bin/hw/android.hardware.light-service.cezanne
     class hal
     user system
     group system

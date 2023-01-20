@@ -971,13 +971,13 @@ vendor/lib64/libscltm.so
 vendor/lib64/vendor.mediatek.hardware.gpu@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
 
-# Graphics (Allocator) - from cezanne-user 12 SP1A.210812.016 V13.0.5.0.SJNCNXM release-keys
-vendor/lib/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so|77c41da16363ada04e4f0078e1a62865851c878d
-vendor/lib64/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so|b24fe60bac44838823651ece169281dd61f5ab9b
+# Graphics (Allocator)
+vendor/lib/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so
+vendor/lib64/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so
 
-# Graphics (Mapper) - from cezanne-user 12 SP1A.210812.016 V13.0.5.0.SJNCNXM release-keys
-vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so|c74316e796bd665a33d39e0d42b3284168dee6c5
-vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so|5469c0176fca95c1f07302789d4f149d6c6ee86b
+# Graphics (Mapper)
+vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so
+vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so
 
 # Fido
 vendor/bin/fidoca
