@@ -384,7 +384,6 @@ PRODUCT_PACKAGES += \
     fstab.mt6885 \
     init.cezanne.rc \
     init.connectivity.rc \
-    init.logcat.rc \
     init.modem.rc \
     init.mt6885.rc \
     init.mt6885.usb.rc \
