@@ -97,12 +97,10 @@ system_ext/lib64/vendor.mediatek.hardware.audio@6.1.so
 vendor/lib/hw/audio.primary.mt6885.so
 vendor/lib/hw/audio.r_submix.mt6885.so
 vendor/lib/hw/audio.usb.mt6885.so
-vendor/lib/hw/audio_policy.stub.so
 vendor/lib/vendor.mediatek.hardware.audio@6.1.so
 vendor/lib64/hw/audio.primary.mt6885.so
 vendor/lib64/hw/audio.r_submix.mt6885.so
 vendor/lib64/hw/audio.usb.mt6885.so
-vendor/lib64/hw/audio_policy.stub.so
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
 
 # Audio-configs

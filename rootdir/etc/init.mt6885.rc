@@ -4,9 +4,8 @@ import /vendor/etc/init/hw/init.connectivity.rc
 import /vendor/etc/init/hw/init.mt6885.usb.rc
 import /vendor/etc/init/hw/init.project.rc
 import /FWUpgradeInit.rc
-import /vendor/etc/init/init.volte.rc
 import /vendor/etc/init/hw/init.sensor_2_0.rc
-import /vendor/etc/init/hw/init.logcat.rc
+import /vendor/etc/init/hw/init.cezanne.rc
 import /vendor/etc/init/hw/init.modem.rc
 
 # *** DO NOT import the new rc file after this line ***
