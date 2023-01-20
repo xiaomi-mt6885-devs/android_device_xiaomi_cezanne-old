@@ -48,6 +48,9 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 # Display
 TARGET_SCREEN_DENSITY := 440
 
+# Fingerprint
+TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.cezanne
+
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_cezanne
 TARGET_RECOVERY_DEVICE_MODULES := libinit_cezanne

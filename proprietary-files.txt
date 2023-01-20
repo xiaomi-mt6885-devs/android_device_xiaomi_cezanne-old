@@ -58,12 +58,8 @@ vendor/lib/libblisrc32_vendor.so
 vendor/lib/libcvsd_mtk.so
 vendor/lib/libfvaudio.so
 vendor/lib/libtinycompress.so
-vendor/lib/libwebrtc_audio_preprocessing.so
 vendor/lib/lib_iir.so
 vendor/lib/lib_speech_enh.so
-vendor/lib/soundfx/libaudiopreprocessing.so
-vendor/lib/soundfx/libaudiopreprocessing_mtk.so
-vendor/lib/soundfx/libmisoundfx.so
 vendor/lib64/hw/sound_trigger.primary.mt6885.so
 vendor/lib64/libalsautils.so:vendor/lib64/libalsautils-v30.so
 vendor/lib64/libaudiocompensationfilterc.so
@@ -94,9 +90,6 @@ vendor/lib64/libvowp23_sid_training.vendor.so
 vendor/lib64/libvowp25testing.vendor.so
 vendor/lib64/libvowp2training.vendor.so
 vendor/lib64/libvow_ap_testing.vendor.so
-vendor/lib64/libwebrtc_audio_preprocessing.so
-vendor/lib64/soundfx/libaudiopreprocessing.so
-vendor/lib64/soundfx/libaudiopreprocessing_mtk.so
 
 # Audio-Hardware
 system_ext/lib/vendor.mediatek.hardware.audio@6.1.so
@@ -860,20 +853,17 @@ vendor/etc/camera/TEMP_J7_WT.bin
 vendor/etc/camera/TEMP_J7_WU.bin
 vendor/etc/camera/vidhance_calibration
 
-# Camera Utils - from cezanne-user 12 SP1A.210812.016 V13.0.5.0.SJNCNXM release-keys
-vendor/lib64/libmtkcam_stdutils.so|16ec1295960b0ec50fc526d33ab99c27fe9cc1fd|85d27fa42b8417cc3701ddcf719460d586b2616e
+# Camera Utils
+vendor/lib64/libmtkcam_stdutils.so
 
 # Camera-motor
 vendor/bin/hw/vendor.xiaomi.hardware.motor@1.0-service
 vendor/etc/step_motor/mi_camera_config.xml
-vendor/lib/hw/vendor.xiaomi.hardware.motor@1.0-impl.so
-vendor/lib/libmivendor_module_motor.so
-vendor/lib/mi.motor.daemon.so
-vendor/lib/vendor.xiaomi.hardware.motor@1.0.so
 vendor/lib64/hw/vendor.xiaomi.hardware.motor@1.0-impl.so
+vendor/lib64/libmivendor_module_calibration.so
+vendor/lib64/libmivendor_module_hall.so
 vendor/lib64/libmivendor_module_motor.so
 vendor/lib64/mi.motor.daemon.so
-vendor/lib64/vendor.xiaomi.hardware.motor@1.0.so
 
 # Charger
 lib/libshowlogo.so
@@ -989,8 +979,16 @@ vendor/lib64/hw/android.hardware.graphics.allocator@4.0-impl-mediatek.so|b24fe60
 vendor/lib/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so|c74316e796bd665a33d39e0d42b3284168dee6c5
 vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-mediatek.so|5469c0176fca95c1f07302789d4f149d6c6ee86b
 
+# Fido
+vendor/bin/fidoca
+vendor/etc/init/vendor.xiaomi.hardware.mfidoca@1.0-service.rc
+-vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mfidoca.xml
+vendor/lib/libmfido.so
+vendor/lib/vendor.xiaomi.hardware.mfidoca@1.0.so
+vendor/lib64/libmfido.so
+vendor/lib64/vendor.xiaomi.hardware.mfidoca@1.0.so
+
 # Fingerprint
--vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml
 vendor/lib/hw/fingerprint.goodix_fod.so
 vendor/lib/libgf_hal.so
 vendor/lib/vendor.goodix.hardware.biometrics.fingerprint@2.1.so
@@ -1452,7 +1450,9 @@ vendor/lib/hw/lights.mt6885.so
 vendor/lib64/hw/lights.mt6885.so
 
 # Media
+vendor/bin/hw/android.hardware.media.omx@1.0-service
 vendor/bin/hw/vendor.mediatek.hardware.mtkcodecservice@1.1-service
+vendor/etc/init/android.hardware.media.omx@1.0-service.rc
 vendor/etc/init/vendor.mediatek.hardware.mtkcodecservice@1.1-service.rc
 vendor/etc/mtk_omx_core.cfg
 vendor/lib/hw/vendor.mediatek.hardware.mtkcodecservice@1.1-impl.so
@@ -1568,7 +1568,6 @@ etc/init/init.vtservice.rc
 -framework/mediatek-framework.jar
 -framework/mediatek-ims-base.jar
 -framework/mediatek-ims-common.jar
--framework/mediatek-services.jar
 -framework/mediatek-telecom-common.jar
 -framework/mediatek-telephony-base.jar
 -framework/mediatek-telephony-common.jar
@@ -1601,6 +1600,7 @@ vendor/bin/gbe
 vendor/etc/init/gbe.rc
 vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-init.rc
 vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc
+-vendor/etc/vintf/manifest/power-default.xml
 vendor/etc/fstb.cfg
 vendor/etc/gbe.cfg
 vendor/etc/task_profiles.json
@@ -1948,8 +1948,10 @@ vendor/etc/init/wlan_assistant.rc
 -vendor/etc/vintf/manifest/manifest.xml:vendor/etc/vintf/manifest/wpa_supplicant.xml
 -vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml
 -vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml
+vendor/lib/libwpa_client.so
 vendor/lib64/libwifi-hal.so
 vendor/lib64/libwifitest.so
+vendor/lib64/libwpa_client.so
 vendor/lib64/vendor.mediatek.hardware.wifi.supplicant@2.0.so
 vendor/lib64/vendor.mediatek.hardware.wifi.supplicant@2.1.so
 vendor/lib64/vendor.mediatek.hardware.wifi.supplicant@2.2.so
@@ -1992,8 +1994,6 @@ vendor/lib/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.misys@3.0-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
-vendor/lib/libmivendor_module_calibration.so
-vendor/lib/libmivendor_module_hall.so
 vendor/lib/libmlipay.so
 vendor/lib/libmlipay@1.1.so
 vendor/lib/libtida@1.1.so
@@ -2017,8 +2017,6 @@ vendor/lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.misys@3.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
-vendor/lib64/libmivendor_module_calibration.so
-vendor/lib64/libmivendor_module_hall.so
 vendor/lib64/libmlipay.so
 vendor/lib64/libmlipay@1.1.so
 vendor/lib64/libtida@1.1.so
@@ -2122,7 +2120,6 @@ vendor/etc/init/slad.rc
 vendor/etc/init/vendor.qti.sla.service@1.0-service.rc
 vendor/etc/init/vendor.rongcard.hardware.eid@1.0-service.rc
 vendor/etc/init/vendor_flash_recovery.rc
-vendor/etc/misound_res.bin
 vendor/etc/nhw
 vendor/etc/noise_table_64_64.rgb
 vendor/etc/NOTICE_GPL.html.gz
@@ -2141,7 +2138,6 @@ vendor/lib/libdre.so
 vendor/lib/libgz_gp_client.so
 vendor/lib/libgz_uree.so
 vendor/lib/liblogwrap_vendor.so
-vendor/lib/libmisound.so
 vendor/lib/libmmprofile.so
 vendor/lib/libnwk_opt_halwrap_vendor.so
 vendor/lib/libopus.so
@@ -2150,7 +2146,6 @@ vendor/lib/libprotobuf-cpp-full-3.9.1.so
 vendor/lib/libprotobuf-cpp-lite-3.9.1.so
 vendor/lib/librt_extamp_intf.so
 vendor/lib/libsn100u_fw.so
-vendor/lib/libtextclassifier_hash.so
 vendor/lib/libthha.so
 vendor/lib/libvcodecdrv.so
 vendor/lib/libvcodec_oal.so
@@ -2182,16 +2177,163 @@ vendor/lib64/libh2o_facility.so
 vendor/lib64/liblightgbm.so
 vendor/lib64/liblogwrap_vendor.so
 vendor/lib64/libmace.so
-vendor/lib64/libmisound.so
 vendor/lib64/libmmprofile.so
-vendor/lib64/libpcap.so
 vendor/lib64/libprotobuf-cpp-full-3.9.1.so
 vendor/lib64/libprotobuf-cpp-lite-3.9.1.so
 vendor/lib64/librt_extamp_intf.so
-vendor/lib64/libtextclassifier_hash.so
 vendor/lib64/vendor.qti.sla.service@1.0-impl.so
 vendor/lib64/vendor.qti.sla.service@1.0.so
 vendor/lib64/vendor.rongcard.hardware.eid@1.0.so
+
+# Mdota
+vendor/etc/mdota/MTK_MD_OTA_CONFIG.ini
+vendor/etc/mdota/MTK_OPOTA_GENERAL.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_1001.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_1002.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_1003.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_1004.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_100.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_101.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_102.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_103.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_104.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_105.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_106.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_107.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_108.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_109.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_10.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_110.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_111.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_112.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_113.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_114.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_115.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_116.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_117.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_118.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_119.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_11.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_120.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_121.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_122.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_123.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_124.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_125.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_126.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_127.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_128.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_129.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_12.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_130.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_131.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_132.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_133.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_134.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_135.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_136.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_137.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_138.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_139.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_140.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_141.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_143.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_144.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_145.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_146.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_147.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_148.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_149.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_150.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_151.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_152.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_153.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_154.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_155.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_156.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_157.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_158.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_159.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_15.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_160.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_161.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_162.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_163.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_164.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_165.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_166.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_167.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_168.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_169.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_16.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_170.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_171.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_172.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_173.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_174.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_175.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_176.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_177.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_178.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_179.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_17.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_180.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_181.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_182.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_183.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_184.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_185.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_186.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_187.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_188.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_189.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_18.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_190.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_191.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_192.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_193.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_194.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_195.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_196.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_197.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_198.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_199.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_19.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_1.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_200.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_201.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_202.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_203.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_204.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_205.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_206.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_207.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_208.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_209.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_20.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_210.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_211.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_212.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_213.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_222.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_223.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_224.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_225.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_2.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_3.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_50.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_5.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_6.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_7.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_8.mcfopota
+vendor/etc/mdota/MTK_OPOTA_SBPID_9.mcfopota
+vendor/etc/mdota/MTK_OTA_CERT_COMMON.mcfota
+vendor/etc/mdota/MTK_OTA_CMCC.mcfota
+vendor/etc/mdota/MTK_OTA_CT.mcfota
+vendor/etc/mdota/MTK_OTA_CU.mcfota
+vendor/etc/mdota/MTK_OTA.mcfota
+vendor/etc/mdota/MTK_OTA_REL10.mcfota
+vendor/etc/mdota/MTK_OTA_REL11.mcfota
 
 # Neural networks
 vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-mtk-neuron
@@ -2284,10 +2426,12 @@ vendor/lib64/vendor.mediatek.hardware.vpu@1.0.so
 
 # EngineerMode
 -priv-app/EngineerMode/EngineerMode.apk
+lib/libaudiotoolkit.so
 lib/libem_audio_jni.so
 lib/libem_support_jni.so
 lib/libem_usb_jni.so
 lib/libem_wifi_jni.so
+lib64/libaudiotoolkit.so
 lib64/libem_audio_jni.so
 lib64/libem_support_jni.so
 lib64/libem_usb_jni.so

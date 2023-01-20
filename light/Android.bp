@@ -14,10 +14,10 @@
 
 cc_binary {
     relative_install_path: "hw",
-    name: "android.hardware.light-service.cezanne",
+    name: "android.hardware.lights-service.cezanne",
     proprietary: true,
-    init_rc: ["android.hardware.light-service.cezanne.rc"],
-    vintf_fragments: ["android.hardware.light-service.cezanne.xml"],
+    init_rc: ["android.hardware.lights-service.cezanne.rc"],
+    vintf_fragments: ["android.hardware.lights-service.cezanne.xml"],
     srcs: ["main.cpp", "Light.cpp"],
     shared_libs: [
         "libhardware",
