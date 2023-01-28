@@ -143,7 +143,7 @@
     <CMD name="PERF_RES_PERF_TASK_TURBO" id="0x0300c000">
         <Entry path="/sys/module/task_turbo/parameters/feats"></Entry>
         <Compare>more</Compare>
-        <MaxValue>15</MaxValue>
+        <MaxValue>30</MaxValue>
         <MinValue>0</MinValue>
         <DefaultValue>0</DefaultValue>
     </CMD>
@@ -572,5 +572,13 @@
         <MaxValue>1</MaxValue>
         <MinValue>0</MinValue>
         <DefaultValue>1</DefaultValue>
+    </CMD>
+    <CMD name="PERF_RES_GPU_SHED_MODE" id="0x0302c000">
+        <Entry path="/sys/devices/platform/13000000.mali/js_ctx_scheduling_mode"></Entry>
+        <Compare>more</Compare>
+        <MaxValue>1</MaxValue>
+        <MinValue>0</MinValue>
+        <DefaultValue>0</DefaultValue>
+        <Valid>1</Valid>
     </CMD>
 </CONTABLE>

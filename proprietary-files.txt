@@ -1444,6 +1444,9 @@ vendor/etc/init/fuelgauged_nvram_init.rc
 vendor/lib/libfgauge_gm30.so
 
 # Lights
+vendor/bin/hw/android.hardware.lights-service.mediatek
+vendor/etc/init/lights-mtk-default.rc
+vendor/etc/vintf/manifest/lights-mtk-default.xml
 vendor/lib/hw/lights.mt6885.so
 vendor/lib64/hw/lights.mt6885.so
 
@@ -1559,7 +1562,6 @@ vendor/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 
 # IMS-System
 bin/vtservice
-etc/apns-conf.xml:product/etc/apns-conf.xml
 etc/init/init.vtservice.rc
 -framework/mediatek-common.jar
 -framework/mediatek-framework-net.jar
@@ -1598,7 +1600,6 @@ vendor/bin/gbe
 vendor/etc/init/gbe.rc
 vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-init.rc
 vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc
--vendor/etc/vintf/manifest/power-default.xml
 vendor/etc/fstb.cfg
 vendor/etc/gbe.cfg
 vendor/etc/task_profiles.json
@@ -1651,7 +1652,6 @@ vendor/lib/vendor.mediatek.hardware.mms@1.5.so
 vendor/lib/vendor.mediatek.hardware.mtkpower@1.1.so
 vendor/lib/vendor.mediatek.hardware.netdagent@1.0.so
 vendor/lib/vendor.mediatek.hardware.nwk_opt@1.0.so
-vendor/lib64/android.hardware.power-service-mediatek.so
 vendor/lib64/hw/vendor.mediatek.hardware.mms@1.5-impl.so
 vendor/lib64/libmtkares.so
 vendor/lib64/libmtkcam.atmseventmgr.so
@@ -1736,8 +1736,6 @@ vendor/lib64/vendor.mediatek.hardware.nwk_opt@1.0.so
 # Secure element
 vendor/bin/hw/android.hardware.secure_element@1.0-service-mediatek
 vendor/bin/hw/vendor.microtrust.hardware.se@1.0-service
-vendor/etc/init/android.hardware.secure_element@1.0-service-mediatek.rc
-vendor/etc/init/vendor.microtrust.hardware.se@1.0-service.rc
 vendor/lib64/se_extn_client.so
 vendor/lib64/secure_element-impl.so
 
@@ -1928,9 +1926,9 @@ vendor/bin/hw/vendor.mtk.hardware.vibrator@1.2-service
 vendor/etc/init/vendor.mtk.hardware.vibrator@1.2-service.rc
 vendor/lib64/hw/vibrator.default.so
 
-# UDF - from cezanne-user 12 SP1A.210812.016 V13.0.5.0.SJNCNXM release-keys
-vendor/lib/libudf.so|e466d9268cfa44d6ffbfef5147d9d0cc2170c411
-vendor/lib64/libudf.so|f57a4f63592b62c2de72b377021327756fc5fac1
+# UDF
+vendor/lib/libudf.so
+vendor/lib64/libudf.so
 
 # WiFi
 bin/iwpriv
@@ -2045,60 +2043,34 @@ vendor/etc/init.panel_info.sh
 vendor/etc/init/init.batteryd.rc
 vendor/etc/init/init.batterysecret.rc
 vendor/etc/init/init.charge_logger.rc
-vendor/etc/init/init.mishow.ctl.rc
 vendor/etc/partition_permission.sh
 
 # Misc
 vendor/bin/batteryd
 vendor/bin/batterysecret
-vendor/bin/boringssl_self_test32
-vendor/bin/boringssl_self_test64
 vendor/bin/bt_dump
 vendor/bin/charge_logger
-vendor/bin/chattr
-vendor/bin/devmem
 vendor/bin/DFtool
 vendor/bin/doeapp-memtester
 vendor/bin/doeapp-sat
 vendor/bin/dtc_vendor
 vendor/bin/dumpfaultd
-vendor/bin/dumpsys
 vendor/bin/em_hidl
-vendor/bin/fsync
-vendor/bin/getconf
 vendor/bin/getgameserver
 vendor/bin/hw/mfp-daemon
 vendor/bin/hw/power_native_test_v_1_0
 vendor/bin/hw/power_native_test_v_1_1
-vendor/bin/hw/vendor.qti.sla.service@1.0-service
-vendor/bin/hw/vendor.rongcard.hardware.eid@1.0-service
-vendor/bin/i2cdetect
-vendor/bin/i2cdump
-vendor/bin/i2cget
-vendor/bin/i2cset
-vendor/bin/iconv
-vendor/bin/install
 vendor/bin/jpegtool
-vendor/bin/lsattr
 vendor/bin/mrdump_tool
-vendor/bin/nc
-vendor/bin/netcat
 vendor/bin/netdc
-vendor/bin/nproc
-vendor/bin/nsenter
-vendor/bin/readelf
 vendor/bin/recordevent
 vendor/bin/replayevent
 vendor/bin/setup_fct
 vendor/bin/slad
-vendor/bin/test
 vendor/bin/testgameserver
-vendor/bin/unlink
-vendor/bin/unshare
 vendor/bin/uuidgen
 vendor/bin/vib_cal
 vendor/bin/vsimd
-vendor/bin/watch
 vendor/bin/wifi_dump
 vendor/etc/.tp/.ht120.mtc
 vendor/etc/aee-config
@@ -2106,7 +2078,6 @@ vendor/etc/default_pd_calibration.bin
 vendor/etc/FV-SAM-MTK2.dat
 vendor/etc/init/atci_service.rc
 vendor/etc/init/audiocmdservice_atci.rc
-vendor/etc/init/boringssl_self_test.rc
 vendor/etc/init/em_hidl_user.rc
 vendor/etc/init/getgameserver.rc
 vendor/etc/init/init.conninfra.rc
@@ -2115,9 +2086,6 @@ vendor/etc/init/init.mfp-daemon.rc
 vendor/etc/init/init_conninfra.rc
 vendor/etc/init/loghidlvendorservice.rc
 vendor/etc/init/slad.rc
-vendor/etc/init/vendor.qti.sla.service@1.0-service.rc
-vendor/etc/init/vendor.rongcard.hardware.eid@1.0-service.rc
-vendor/etc/init/vendor_flash_recovery.rc
 vendor/etc/nhw
 vendor/etc/noise_table_64_64.rgb
 vendor/etc/NOTICE_GPL.html.gz
@@ -2129,7 +2097,6 @@ vendor/etc/smartpa_param/rt_device.xml
 vendor/etc/throttle.sh
 vendor/etc/init/bootperf.rc
 vendor/etc/factory.ini
-vendor/lib/hw/vendor.rongcard.hardware.eid@1.0-impl.so
 vendor/lib/libavservices_minijail.so
 vendor/lib/libcheckpid.so
 vendor/lib/libdre.so
@@ -2155,10 +2122,6 @@ vendor/lib/libvowp25testing.vendor.so
 vendor/lib/libvowp2training.vendor.so
 vendor/lib/libvow_ap_testing.vendor.so
 vendor/lib/libvpx.so
-vendor/lib/vendor.qti.sla.service@1.0-impl.so
-vendor/lib/vendor.qti.sla.service@1.0.so
-vendor/lib/vendor.rongcard.hardware.eid@1.0.so
-vendor/lib64/hw/vendor.rongcard.hardware.eid@1.0-impl.so
 vendor/lib64/libaaa_ltm.so
 vendor/lib64/libaaa_ltmx.so
 vendor/lib64/libaibc_tuning.so
@@ -2179,9 +2142,6 @@ vendor/lib64/libmmprofile.so
 vendor/lib64/libprotobuf-cpp-full-3.9.1.so
 vendor/lib64/libprotobuf-cpp-lite-3.9.1.so
 vendor/lib64/librt_extamp_intf.so
-vendor/lib64/vendor.qti.sla.service@1.0-impl.so
-vendor/lib64/vendor.qti.sla.service@1.0.so
-vendor/lib64/vendor.rongcard.hardware.eid@1.0.so
 
 # Mdota
 vendor/etc/mdota/MTK_MD_OTA_CONFIG.ini
@@ -2451,19 +2411,3 @@ media/audio/ui/popup_yingyan_up.ogg
 
 # Power-off charging daemon
 bin/charger
-
-# Prebuilt kernel modules
-vendor/lib/modules/bt_drv.ko
-vendor/lib/modules/conninfra.ko
-vendor/lib/modules/fmradio_drv.ko
-vendor/lib/modules/fpsgo.ko
-vendor/lib/modules/gps_drv.ko
-vendor/lib/modules/kheaders.ko
-vendor/lib/modules/met.ko
-vendor/lib/modules/modules.alias
-vendor/lib/modules/modules.dep
-vendor/lib/modules/modules.load
-vendor/lib/modules/modules.softdep
-vendor/lib/modules/sla.ko
-vendor/lib/modules/wlan_drv_gen4m.ko
-vendor/lib/modules/wmt_chrdev_wifi.ko

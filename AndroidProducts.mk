@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_cezanne.mk
+    $(LOCAL_DIR)/aosp_cezanne.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_cezanne-user \
-    lineage_cezanne-userdebug \
-    lineage_cezanne-eng
+    aosp_cezanne-user \
+    aosp_cezanne-userdebug \
+    aosp_cezanne-eng

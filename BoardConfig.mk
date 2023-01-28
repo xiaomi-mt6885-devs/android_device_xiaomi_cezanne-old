@@ -45,6 +45,9 @@ TARGET_NO_BOOTLOADER := true
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
+# DT2W
+TARGET_TAP_TO_WAKE_NODE := "/sys/touchpanel/double_tap"
+
 # Display
 TARGET_SCREEN_DENSITY := 440
 
@@ -121,9 +124,8 @@ BOARD_SUPER_PARTITION_GROUPS := main
 TARGET_BOARD_PLATFORM := mt6885
 
 # Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/props/system.prop
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/props/vendor.prop
-TARGET_PRODUCT_PROP += $(DEVICE_PATH)/configs/props/product.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.mt6885
@@ -145,7 +147,8 @@ include device/mediatek/sepolicy_vndr/SEPolicy.mk
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # VINTF
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Inherit the proprietary files
 include vendor/xiaomi/cezanne/BoardConfigVendor.mk

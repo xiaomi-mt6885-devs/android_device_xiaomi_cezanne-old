@@ -24,7 +24,6 @@ import android.util.Log;
 
 import org.lineageos.settings.doze.DozeUtils;
 import org.lineageos.settings.popupcamera.PopupCameraUtils;
-import org.lineageos.settings.thermal.ThermalUtils;
 import org.lineageos.settings.utils.FileUtils;
 import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
@@ -41,7 +40,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         if (DEBUG) Log.d(TAG, "Received boot completed intent");
         DozeUtils.checkDozeService(context);
         PopupCameraUtils.startService(context);
-        ThermalUtils.startService(context);
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         boolean hbmEnabled = sharedPrefs.getBoolean(HBM_ENABLE_KEY, false);

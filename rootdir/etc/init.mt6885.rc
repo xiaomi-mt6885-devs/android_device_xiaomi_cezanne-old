@@ -3,7 +3,6 @@
 import /vendor/etc/init/hw/init.connectivity.rc
 import /vendor/etc/init/hw/init.mt6885.usb.rc
 import /vendor/etc/init/hw/init.project.rc
-import /FWUpgradeInit.rc
 import /vendor/etc/init/hw/init.sensor_2_0.rc
 import /vendor/etc/init/hw/init.cezanne.rc
 import /vendor/etc/init/hw/init.modem.rc
@@ -31,11 +30,6 @@ on init
 
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
-
-    # if primary storage is physical, set ro.vold.primary_physical to 1
-    # setprop ro.vold.primary_physical 1
-
-    mkdir /mnt/cd-rom 0000 system system
 
 # change lk_env permission
     chown root system /proc/lk_env
@@ -129,9 +123,6 @@ on fs
     write /proc/sys/vm/swappiness 60
     write /sys/kernel/mm/swap/vma_ra_enabled false
     swapon_all /vendor/etc/fstab.mt6885
-
-on fs
-    mount iso9660 loop@/vendor/etc/iAmCdRom.iso /mnt/cd-rom ro
 
 on late-fs
     write /proc/bootprof "INIT:late-fs"
@@ -253,7 +244,6 @@ on post-fs-data
     mkdir /data/vendor/AFObitTrue
     chown root system /data/vendor/AFObitTrue
     chmod 0771 /data/vendor/AFObitTrue
-
 
     #Create shading mount point
     mkdir /data/vendor/shading
@@ -386,10 +376,7 @@ on post-fs-data
     chown root system /dev/alarm
 
     # M4U
-    #insmod /vendor/lib/modules/m4u.ko
-    #mknod /dev/M4U_device c 188 0
     chmod 0444 /dev/m4u
-    #chown system media /dev/M4U_device
 
     #set mlock limit to infinate (for m4u operation)
     setrlimit 8 -1 -1
@@ -960,28 +947,10 @@ on property:vendor.audio.cit.spkcal.copy=true
 on property:vold.decrypt=trigger_post_fs_data
     write /proc/bootprof "INIT:vold.decrypt=trigger_post_fs_data"
 
-on property:vold.decrypt=trigger_restart_min_framework
-    write /proc/bootprof "INIT:vold.decrypt=trigger_restart_min_framework"
-    start msensord
-    start permission_check
-
-on property:vold.decrypt=trigger_restart_framework
-    write /proc/bootprof "INIT:vold.decrypt=trigger_restart_framework"
-    start msensord
-    start permission_check
-
 on property:vold.decrypt=trigger_shutdown_framework
     write /proc/bootprof "INIT:vold.decrypt=trigger_shutdown_framework"
     setprop sys.boot_completed 0
     setprop dev.bootcomplete 0
-
-# bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/dumpstate -d -p -B -z \
-        -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
-    class late_start
-    disabled
-    oneshot
-    keycodes 114 115 116
 
 # end boot time fs tune
 on property:sys.boot_completed=1
@@ -1027,40 +996,6 @@ on property:sys.boot_completed=1
 
     # stop bootprof
     write /proc/bootprof 0
-
-#service dpfd /vendor/bin/dpfd
-#	user root
-#	group system media
-
-#
-#  External Modme control related services
-#
-
-#
-#  Modem related services (Begin)
-#
-##Add by T.Zh for ppp daemon
-#service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
-#    user root
-#    disabled
-#    oneshot
-#
-##
-#
-#  Modem related services (End)
-#
-
-#add for power-off alarm
-#service poad /vendor/bin/poad
-#    class main
-#    user system
-#    group system
-#    oneshot
-
-#service BGW /vendor/xbin/BGW
-#	user system
-#	group gps system radio
-#	class main
 
 # Battery info
 on property:persist.vendor.mediatek.fg.disable=1
@@ -1116,14 +1051,6 @@ on boot
 # add this link for cust mount
 on init
     symlink /dev/block/platform/bootdevice /dev/block/bootdevice
-
-# VSIM service (vendor OSI)
-service osi /system/bin/osi
-    class main
-    user root
-    disabled
-    oneshot
-    #seclabel u:r:osi:s0
 
 service charger /system/bin/charger
     class charger

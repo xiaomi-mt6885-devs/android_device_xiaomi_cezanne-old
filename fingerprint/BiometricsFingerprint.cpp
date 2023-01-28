@@ -31,10 +31,6 @@
 
 #define TOUCH_FOD_ENABLE 10
 
-#define DISPPARAM_PATH "/sys/class/drm/card0-DSI-1/disp_param"
-#define DISPPARAM_HBM_FOD_ON "0x20000"
-#define DISPPARAM_HBM_FOD_OFF "0xE0000"
-
 namespace android {
 namespace hardware {
 namespace biometrics {
@@ -50,7 +46,6 @@ static void set(const std::string& path, const T& value) {
 
 static void threadboost(sp<IXiaomiFingerprint> txiaomiFingerprintService){
     usleep(50000);
-    set(DISPPARAM_PATH, DISPPARAM_HBM_FOD_ON);
     txiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_FOD);
 }
 
@@ -111,14 +106,6 @@ Return<void> BiometricsFingerprint::onFingerDown(uint32_t, uint32_t, float, floa
 }
 
 Return<void> BiometricsFingerprint::onFingerUp() {
-    set(DISPPARAM_PATH, DISPPARAM_HBM_FOD_OFF);
-    touchFeatureService->setTouchMode(TOUCH_FOD_ENABLE, 0);
-    xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_NONE);
-    return Void();
-}
-
-Return<void> BiometricsFingerprint::onHideUdfpsOverlay() {
-    set(DISPPARAM_PATH, DISPPARAM_HBM_FOD_OFF);
     touchFeatureService->setTouchMode(TOUCH_FOD_ENABLE, 0);
     xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_NONE);
     return Void();
@@ -126,6 +113,12 @@ Return<void> BiometricsFingerprint::onHideUdfpsOverlay() {
 
 Return<void> BiometricsFingerprint::onShowUdfpsOverlay() {
     touchFeatureService->setTouchMode(TOUCH_FOD_ENABLE, 1);
+    return Void();
+}
+
+Return<void> BiometricsFingerprint::onHideUdfpsOverlay() {
+    touchFeatureService->setTouchMode(TOUCH_FOD_ENABLE, 0);
+    xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_NONE);
     return Void();
 }
 
