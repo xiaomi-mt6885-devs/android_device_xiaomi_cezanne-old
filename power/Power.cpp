@@ -21,10 +21,7 @@
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <linux/input.h>
-
-#ifdef TAP_TO_WAKE_NODE
 #include <android-base/file.h>
-#endif
 
 namespace aidl {
 namespace android {
@@ -78,13 +75,6 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     LOG(VERBOSE) << "Power setMode: " << static_cast<int32_t>(type) << " to: " << enabled;
 
     switch (type) {
-#ifdef TAP_TO_WAKE_NODE
-        case Mode::DOUBLE_TAP_TO_WAKE:
-        {
-            ::android::base::WriteStringToFile(enabled ? "1" : "0", TAP_TO_WAKE_NODE, true);
-            break;
-        }
-#endif
         case Mode::LAUNCH:
         {
             if (this->handle != 0) {

@@ -14,10 +14,6 @@ LOCAL_SHARED_LIBRARIES := \
     libpowerhal \
     android.hardware.power-V1-ndk
 
-ifneq ($(TARGET_TAP_TO_WAKE_NODE),)
-  LOCAL_CFLAGS += -DTAP_TO_WAKE_NODE=\"$(TARGET_TAP_TO_WAKE_NODE)\"
-endif
-
 LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 
 include $(BUILD_SHARED_LIBRARY)
